@@ -15,7 +15,7 @@ Download and extract the latest  release for Linux systems: [streamscraper-gui-l
 
 ```bash
 wget https://github.com/mihaly044/streamscraper-gui/releases/download/v0.1.rev-be66af-alpha/streamscraper-gui-linux-x64-bundle-rev71bf0d.tar.gz)
-tar xzf streamscraper-gui-linux-x64-bundle-rev71bf0d.tar.gz
+tar -xzf streamscraper-gui-linux-x64-bundle-rev71bf0d.tar.gz 
 ```
 After the download has completed, run the application by starting `streamscraperGui.sh`:
 

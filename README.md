@@ -14,15 +14,15 @@ You can either download an installer, or a portable version. After you have down
 Download and extract the latest  release for Linux systems: [streamscraper-gui-linux-x64-bundle-rev71bf0d.tar.gz](https://github.com/mihaly044/streamscraper-gui/releases/download/v0.1.rev-be66af-alpha/streamscraper-gui-linux-x64-bundle-rev71bf0d.tar.gz)
 
 ```bash
-wget https://github.com/mihaly044/streamscraper-gui/releases/download/v0.1.rev-be66af-alpha/streamscraper-gui-linux-x64-bundle-rev71bf0d.tar.gz)
+wget https://github.com/mihaly044/streamscraper-gui/releases/download/v0.1.rev-be66af-alpha/streamscraper-gui-linux-x64-bundle-rev71bf0d.tar.gz \
 tar -xzf streamscraper-gui-linux-x64-bundle-rev71bf0d.tar.gz 
 ```
 After the download has completed, run the application by starting `streamscraperGui.sh`:
 
 ```bash
-cd streamscraper-gui-linux-x64-bundle-rev71bf0d
-chmod +x ./streamscraperGui.sh
-./streamscraperGui.sh
+cd streamscraper-gui-linux-x64-bundle-rev71bf0d \
+chmod +x ./streamscraperGui.sh \
+./streamscraperGui.sh \
 ```
 **Notice**: Linux releases don't come with ffmpeg. You need to install it on your system. For example on Debian systems (*buntu, linuxmint, debian), you'd install it as follows:
 ```bash

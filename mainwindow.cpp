@@ -132,7 +132,7 @@ void MainWindow::closeEvent(QCloseEvent* pClose)
 
 void MainWindow::killDownload()
 {
-    if(pProcForDL)
+    if(pProcForDL != nullptr && pProcForDL->state() == QProcess::ProcessState::Running)
         pProcForDL->kill();
 }
 

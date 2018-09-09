@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QProcess>
+#include <QCloseEvent>
 
 namespace Ui {
 class MainWindow;
@@ -25,10 +26,14 @@ private slots:
 
     void on_pushButtonDownload_clicked();
 
+    void on_pushButtonCancel_clicked();
+
 private:
     void loadParserList();
     void resetState();
+    void killDownload();
 
+    void closeEvent (QCloseEvent *event);
 private:
     Ui::MainWindow *ui;
     QProcess* pProcForList;

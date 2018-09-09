@@ -77,6 +77,7 @@ void MainWindow::resetState()
 {
     ui->pushButtonDownload->setEnabled(true);
     ui->pushButtonBrowse->setEnabled(true);
+    ui->pushButtonCancel->setEnabled(false);
 }
 
 void MainWindow::readStdErrDL()
@@ -121,4 +122,23 @@ void MainWindow::on_pushButtonDownload_clicked()
     pProcForDL->start();
     ui->pushButtonDownload->setEnabled(false);
     ui->pushButtonBrowse->setEnabled(false);
+    ui->pushButtonCancel->setEnabled(true);
+}
+
+void MainWindow::closeEvent(QCloseEvent* pClose)
+{
+    killDownload();
+}
+
+void MainWindow::killDownload()
+{
+    if(pProcForDL)
+        pProcForDL->kill();
+}
+
+void MainWindow::on_pushButtonCancel_clicked()
+{
+    killDownload();
+    ui->progressBar->setValue(0);
+    resetState();
 }

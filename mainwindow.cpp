@@ -109,6 +109,17 @@ void MainWindow::on_pushButtonBrowse_clicked()
 
 void MainWindow::on_pushButtonDownload_clicked()
 {
+
+    QString url = ui->txtUrl->text();
+    QString location = ui->txtLocation->text();
+
+    if(url.isEmpty() || location.isEmpty())
+    {
+        QMessageBox::warning(this, "Warning", "Please fill out both the URL and the location fields");
+        return;
+    }
+
+
     this->pProcForDL = new QProcess(this);
     pProcForDL->setProcessChannelMode(QProcess::MergedChannels);
     pProcForDL->setProgram("bin/streamscraper");

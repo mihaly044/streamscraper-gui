@@ -98,6 +98,11 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButtonBrowse_clicked()
 {
     QString location = QFileDialog::getSaveFileName(this, "Save file", "./", "MP4 Movies  (*.mp4)");
+
+#ifndef Q_OS_WIN
+   location.append(".mp4"); // append file extension. Windows does it auto
+#endif
+
     ui->txtLocation->setText(location + ".mp4");
 }
 
@@ -127,6 +132,7 @@ void MainWindow::on_pushButtonDownload_clicked()
 
 void MainWindow::closeEvent(QCloseEvent* pClose)
 {
+    Q_UNUSED(pClose);
     killDownload();
 }
 

@@ -12,6 +12,14 @@ MainWindow::MainWindow(QWidget *parent) :
     setFixedSize(width(), height());
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
     loadParserList();
+
+    /* Temp workaround for killing streamscraper when
+     * the gui closes.
+     * Checking if pProcForDL is null or nullptr
+     * will always return false. Instead, create
+     * a new QProcess even if it will be never used
+     */
+    this->pProcForDL = new QProcess(this);
 }
 
 void MainWindow::loadParserList()
@@ -119,6 +127,9 @@ void MainWindow::on_pushButtonDownload_clicked()
         return;
     }
 
+    // Workaround for crash on exit. See more details in ctor
+    delete pProcForDL;
+    pProcForDL = nullptr;
 
     this->pProcForDL = new QProcess(this);
     pProcForDL->setProcessChannelMode(QProcess::MergedChannels);
@@ -150,8 +161,9 @@ void MainWindow::closeEvent(QCloseEvent* pClose)
 
 void MainWindow::killDownload()
 {
-    if(pProcForDL != nullptr && pProcForDL->state() == QProcess::ProcessState::Running)
-        pProcForDL->kill();
+    // kill will do nothing if the process
+    // has never been running
+    pProcForDL->kill();
 }
 
 void MainWindow::on_pushButtonCancel_clicked()

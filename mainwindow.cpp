@@ -112,7 +112,7 @@ void MainWindow::on_pushButtonBrowse_clicked()
    location.append(".mp4"); // append file extension. Windows does it auto
 #endif
 
-    ui->txtLocation->setText(location + ".mp4");
+    ui->txtLocation->setText(location);
 }
 
 void MainWindow::on_pushButtonDownload_clicked()
